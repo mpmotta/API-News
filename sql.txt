@@ -1,0 +1,56 @@
+CREATE TABLE noticias (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(255) NOT NULL,
+    noticia TEXT NOT NULL,
+    imagem VARCHAR(255) NULL,
+    categoria VARCHAR(100) NOT NULL,
+    quem_postou VARCHAR(100) NOT NULL,
+    data_postagem TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    data_editado TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO noticias (
+    titulo, 
+    noticia, 
+    imagem, 
+    categoria, 
+    data_postagem, 
+    quem_postou
+) VALUES (
+    'Governo anuncia novo pacote de medidas econômicas',
+    'O ministério da economia detalhou hoje o novo pacote de medidas que visa estimular o crescimento.\n\nEspecialistas analisam o impacto das propostas no mercado financeiro e no dia a dia da população. A bolsa de valores reagiu positivamente nas primeiras horas do pregão.',
+    'no-image.jpg',
+    'Política',
+    '2025-11-14 10:00:00',
+    'Ana Pereira'
+);
+
+INSERT INTO noticias (
+    titulo, 
+    noticia, 
+    imagem, 
+    categoria, 
+    data_postagem, 
+    quem_postou
+) VALUES (
+    'Novo campeão de fórmula 1',
+    'O piloto X venceu a corrida de hoje...',
+    'f1-image.jpg',
+    'Esportes',
+    '2025-11-15 14:30:00',
+    'Carlos Silva'
+);
+
+INSERT INTO noticias (
+    titulo, 
+    noticia, 
+    imagem, 
+    categoria, 
+    quem_postou
+) VALUES (
+    'Nova descoberta científica',
+    'Cientistas da universidade X anunciaram hoje...',
+    'science.jpg',
+    'Ciência',
+    'Mariana Costa'
+);
