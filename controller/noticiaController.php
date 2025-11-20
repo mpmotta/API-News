@@ -66,42 +66,6 @@ class noticiaController {
         return $noticia;
     }
 
-    // Método para atualizar IMAGEM (FormData)
-    public function updateImage($id, $files) {
-        
-        if (isset($files['imagem']) && $files['imagem']['error'] === UPLOAD_ERR_OK) {
-            
-            $nomeDoArquivo = $this->gerenciarUpload($files['imagem']); // Faz o upload
-
-            try {
-                $noticiaModel = new Noticia();
-                $noticiaModel->atualizarImagem($id, $nomeDoArquivo); // Salva no banco
-                
-                return $nomeDoArquivo; 
-
-            } catch (Exception $e) {
-                throw new Exception("Falha ao ATUALIZAR O BANCO: " . $e->getMessage());
-            }
-
-        } else {
-            throw new Exception("Nenhum arquivo 'imagem' foi recebido pelo backend.");
-        }
-    }
-
-    // Método de upload
-    private function gerenciarUpload($file) {
-        if (!is_dir(UPLOAD_DIR_BACKEND)) {
-            mkdir(UPLOAD_DIR_BACKEND, 0777, true); 
-        }
-        
-        $extensao = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $novoNome = uniqid() . '.' . $extensao; 
-        $destino = UPLOAD_DIR_BACKEND . $novoNome;
-
-        if (move_uploaded_file($file['tmp_name'], $destino)) {
-            return $novoNome;
-        } else {
-            throw new Exception("Falha ao mover o arquivo de upload para o destino.");
-        }
-    }
+   
+    
 }
